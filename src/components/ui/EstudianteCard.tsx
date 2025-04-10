@@ -1,7 +1,7 @@
 type EstudianteCardProps = {
     nombre: string;
     edad: number;
-  };
+};
   
   function EstudianteCard({ nombre, edad }: EstudianteCardProps) {
     return (

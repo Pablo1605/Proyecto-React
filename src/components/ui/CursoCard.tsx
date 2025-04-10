@@ -11,6 +11,8 @@ function CursoCard({ id, nombre, cantidadAlumnos }: CursoCardProps) {
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', border: '1px solid black', padding: '10px', margin: '10px' }}>
       <h2>{nombre}</h2>
       <p>Alumnos: {cantidadAlumnos}</p>
+
+      {/* Enlace que muestra la lista de los estudiantes */}
       <Link to={`/estudiantes?curso=${id}`}>
         Ver estudiantes
       </Link>

@@ -3,8 +3,18 @@ import { getCursoById } from '../../http/api';
 import EstudianteCard from '../ui/EstudianteCard';
 import { useSearchParams } from 'react-router';
 
-type Estudiante = { id: number; nombre: string; edad: number };
-type Curso = { id: number; nombre: string; estudiantes: Estudiante[] };
+// Tipado
+type Estudiante = { 
+    id: number; 
+    nombre: string; 
+    edad: number 
+};
+
+type Curso = { 
+    id: number; 
+    nombre: string; 
+    estudiantes: Estudiante[] 
+};
 
 function EstudiantesScreen() {
   const [searchParams] = useSearchParams();
@@ -12,6 +22,7 @@ function EstudiantesScreen() {
   const [curso, setCurso] = useState<Curso | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Este useEffect busca el curso por id
   useEffect(() => {
     if (!cursoId) {
       setError('No se seleccionó ningún curso.');
@@ -29,6 +40,8 @@ function EstudiantesScreen() {
   return (
     <div>
       <h1>Estudiantes de {curso.nombre}</h1>
+
+      {/* Lista de estudiantes */}
       <div>
         {curso.estudiantes.map(est => (
           <EstudianteCard 

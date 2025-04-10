@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getCursos } from '../../http/api';
 import CursoCard from '../ui/CursoCard';
 
+// Tipado
 type Estudiante = { 
     id: number; 
     nombre: string; 
@@ -17,6 +18,7 @@ type Curso = {
 function CursosScreen() {
   const [cursos, setCursos] = useState<Curso[]>([]);
 
+  // Con este useEffect se cargan los cursos al montar el componente
   useEffect(() => {
     getCursos().then(setCursos).catch(console.error);
   }, []);
@@ -24,6 +26,7 @@ function CursosScreen() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <h1>Cursos</h1>
+      {/* Aca se renderiza una tarjeta por cada curso */}
       <div>
         {cursos.map(curso => (
           <CursoCard
